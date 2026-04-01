@@ -1,0 +1,14 @@
+# openclaw 数据目录 - 忽略内容但保留目录
+openclaw/*
+!openclaw/.gitkeep
+
+# workspace 工作目录 - 忽略内容但保留目录
+workspace/*
+!workspace/.gitkeep
+
+# Docker
+.env
+
+# IDE
+.vscode/
+.idea/

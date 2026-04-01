@@ -1,0 +1,25 @@
+services:
+  openclaw-box:
+    build:
+      context: .
+      args:
+        UID: ${HOST_UID}
+        GID: ${HOST_GID}
+    container_name: openclaw-box
+    hostname: openclaw-box
+    ports:
+      - "18789:18789"
+      - "18790:18790"
+    volumes:
+      - ./openclaw:/home/linuxbrew/.openclaw
+      - ${WORKSPACE}:/workspace
+      - ${SSH_DIR}:/home/linuxbrew/.ssh:ro
+    environment:
+      - TERM=${TERM:-xterm-256color}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - HOMEBREW_NO_INSTALL_UPGRADE=${HOMEBREW_NO_INSTALL_UPGRADE}
+      - HOMEBREW_API_DOMAIN=${HOMEBREW_API_DOMAIN}
+      - HOMEBREW_BOTTLE_DOMAIN=${HOMEBREW_BOTTLE_DOMAIN}
+    stdin_open: true
+    tty: true
