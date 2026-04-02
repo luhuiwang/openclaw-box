@@ -31,8 +31,7 @@ RUN brew install python node && \
     npm config set fetch-retry-maxtimeout 120000
 
 # ── agent 工具 (频繁更新) ────────────────────────────────
-RUN brew install opencode openclaw-cli && \
-    brew cleanup --prune=0
+RUN npm i -g openclaw opencode-ai
 
 WORKDIR /home/linuxbrew
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
