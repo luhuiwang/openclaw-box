@@ -75,8 +75,8 @@ env: ## 生成 .env 配置文件
 # 2. 配置 openclaw
 # =============================================================================
 .PHONY: onboard
-onboard: check-running ## 交互式配置向导
-	$(COMPOSE) exec -it $(SERVICE) openclaw onboard
+onboard: check-env ## 交互式配置向导
+	$(COMPOSE) run --rm -it $(SERVICE) openclaw onboard
 
 # =============================================================================
 # 3. 启动/运行

@@ -68,8 +68,8 @@ make up
 
 部分命令会自动检查前置条件：
 
-- `build`, `up`, `info` - 检查 `.env` 是否存在
-- `onboard`, `logs`, `restart`, `dashboard`, `tui`, `shell`, `opencode`, `doctor` - 检查容器是否运行
+- `build`, `up`, `info`, `onboard` - 检查 `.env` 是否存在
+- `logs`, `restart`, `dashboard`, `tui`, `shell`, `opencode`, `doctor` - 检查容器是否运行
 
 ---
 
