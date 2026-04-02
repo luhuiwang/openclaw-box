@@ -34,41 +34,42 @@ make up
 
 ## 命令一览
 
-### 基础命令
+运行 `make help` 查看所有可用命令：
 
-| 命令 | 说明 |
+```bash
+🦞 openclaw-box
+
+  help              显示帮助
+  env               生成 .env 配置文件
+  onboard           交互式配置向导
+  build             构建镜像 (NO_CACHE=1 强制)
+  up                启动容器
+  logs              查看日志
+  status            查看状态
+  restart           重启容器
+  down              停止容器
+  dashboard         Dashboard 链接
+  tui               终端 UI
+  shell             进入 shell
+  opencode          运行 opencode
+  info              环境信息
+  doctor            诊断检查
+  clean             清理容器和镜像
+```
+
+### 变量
+
+| 变量 | 说明 |
 |------|------|
-| `make env` | 检测 UID/GID 并生成 `.env` 配置文件 |
-| `make build` | 构建 Docker 镜像 |
-| `make up` | 启动容器 |
-| `make down` | 停止容器 |
-| `make restart` | 重启容器 |
+| `NO_CACHE=1` | 强制构建时不使用缓存 |
+| `ARGS="..."` | 传递参数给 opencode |
 
-### 调试命令
+### 前置检查
 
-| 命令 | 说明 |
-|------|------|
-| `make status` | 查看容器运行状态 |
-| `make logs` | 查看容器日志 (tail -f) |
-| `make shell` | 进入容器 shell |
+部分命令会自动检查前置条件：
 
-### OpenClaw 命令
-
-| 命令 | 说明 |
-|------|------|
-| `make dashboard` | 获取 Dashboard 访问链接 |
-| `make tui` | 进入 openclaw TUI |
-| `make onboard` | 运行交互式配置向导 |
-| `make opencode` | 运行 opencode CLI |
-
-### 其他
-
-| 命令 | 说明 |
-|------|------|
-| `make doctor` | 运行 openclaw 诊断检查 |
-| `make clean` | 清理容器、镜像和构建缓存 |
-| `make info` | 显示环境信息和配置 |
-| `make help` | 显示帮助信息 |
+- `build`, `up`, `info` - 检查 `.env` 是否存在
+- `onboard`, `logs`, `restart`, `dashboard`, `tui`, `shell`, `opencode`, `doctor` - 检查容器是否运行
 
 ---
 
