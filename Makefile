@@ -16,7 +16,7 @@ help: ## 显示帮助
 	@echo "4️⃣ 状态:    make status | make logs"
 	@echo "5️⃣ 重启停止: make restart | make down"
 	@echo "6️⃣ 运行:    make dashboard | make tui | make shell | make opencode"
-	@echo "7️⃣ 信息:    make info | make help"
+	@echo "7️⃣ 信息:    make info | make doctor | make help"
 	@echo "8️⃣ 清理:    make clean"
 	@echo ""
 	@echo "完整命令:"
@@ -32,6 +32,7 @@ help: ## 显示帮助
 	@echo "  make shell           进入 shell"
 	@echo "  make opencode        运行 opencode"
 	@echo "  make info            环境信息"
+	@echo "  make doctor          诊断检查"
 	@echo "  make help            帮助"
 	@echo "  make clean           清理"
 
@@ -125,7 +126,7 @@ opencode: ## 运行 opencode
 # =============================================================================
 # 7. 信息
 # =============================================================================
-.PHONY: info
+.PHONY: info doctor
 info: ## 环境信息
 	@$(COMPOSE) run --rm openclaw-box bash -c '\
 		echo "=== 环境 ==="; \
@@ -134,6 +135,9 @@ info: ## 环境信息
 		echo "brew: $$(brew --version 2>&1 | head -1)"; \
 		echo "opencode: $$(command -v opencode && opencode --version 2>&1 | head -1)"; \
 		echo "openclaw: $$(command -v openclaw && openclaw --version 2>&1 | head -1)"'
+
+doctor: ## 诊断检查
+	$(COMPOSE) exec openclaw-box openclaw doctor
 
 # =============================================================================
 # 8. 清理

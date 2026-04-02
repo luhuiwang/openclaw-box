@@ -7,6 +7,7 @@ services:
         GID: ${HOST_GID}
     container_name: openclaw-box
     hostname: openclaw-box
+    restart: unless-stopped
     ports:
       - "18789:18789"
       - "18790:18790"
