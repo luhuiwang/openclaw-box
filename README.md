@@ -87,6 +87,47 @@ make up
 
 ---
 
+## 使用场景
+
+### make shell - 进入容器操作
+
+进入容器后可以执行所有 openclaw 命令：
+
+```bash
+make shell
+
+# 常用操作
+openclaw status              # 查看状态
+openclaw status --deep       # 深度状态检查
+openclaw doctor              # 诊断问题
+openclaw doctor --fix        # 自动修复
+openclaw logs                # 查看日志
+openclaw config get          # 查看配置
+openclaw config set key val  # 修改配置
+openclaw plugins list        # 列出插件
+openclaw plugins update      # 更新插件
+openclaw memory status       # 记忆状态
+```
+
+**建议：** 复杂的 openclaw 配置和调试操作，推荐进入 shell 后执行。
+
+### make opencode - AI 辅助配置调试
+
+进入 opencode 交互模式，让 AI 帮你操作 openclaw，无需记忆命令：
+
+```bash
+make opencode
+
+# 进入后直接提问
+> openclaw 怎么配置微信通道？
+> 帮我检查 openclaw 的配置问题
+> 微信收不到消息，帮我看看日志
+```
+
+**建议：** 把 opencode 当作 openclaw 的智能助手，有问题直接问它。
+
+---
+
 ## 架构概览
 
 ```
