@@ -3,6 +3,7 @@
 # =============================================================================
 
 SHELL := /bin/bash
+.SILENT:
 .DEFAULT_GOAL := help
 
 # -----------------------------------------------------------------------------
@@ -119,13 +120,13 @@ dashboard: check-running ## Dashboard 链接
 	echo "Dashboard: http://127.0.0.1:$(PORT_GATEWAY)/?authToken=$$TOKEN"
 
 tui: check-running ## 终端 UI
-	$(COMPOSE) exec -it $(SERVICE) openclaw tui
+	-$(COMPOSE) exec -it $(SERVICE) openclaw tui
 
 shell: check-running ## 进入 shell
-	$(COMPOSE) exec $(SERVICE) bash
+	-$(COMPOSE) exec $(SERVICE) bash
 
 opencode: check-running ## 运行 opencode
-	$(COMPOSE) exec $(SERVICE) opencode $(ARGS)
+	-$(COMPOSE) exec $(SERVICE) opencode $(ARGS)
 
 # =============================================================================
 # 7. 信息
@@ -141,7 +142,7 @@ info: check-env ## 环境信息
 		echo "openclaw: $$(command -v openclaw && openclaw --version 2>&1 | head -1)"'
 
 doctor: check-running ## 诊断检查
-	$(COMPOSE) exec $(SERVICE) openclaw doctor
+	-$(COMPOSE) exec $(SERVICE) openclaw doctor
 
 # =============================================================================
 # 8. 清理
